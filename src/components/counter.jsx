@@ -39,7 +39,8 @@ class Counter extends Component {
         {/* <button onClick={this.handIncrement} className='btn btn-secondary btn-sm'>Increment </button> */}
         
         <button 
-          onClick={this.dohandleincrement } 
+          //onClick={  this.dohandleincrement }
+          onClick={() => this.props.onIncrement(this.props.counter) } 
           className='btn btn-secondary btn-sm'>
           Increment 
         </button>
@@ -62,12 +63,12 @@ class Counter extends Component {
 
     getbadgeclasses() {
       let classes = 'btn m-2 btn-';
-      classes += this.state.value === 0 ? "warning" : "primary";
+      classes += this.props.counter.value === 0 ? "warning" : "primary";
       return classes;
     }
 
     formatCount(){
-      const {value: count} =this.state;
+      const {value: count} =this.props.counter;
 
 
       return count === 0 ? "Zero" : count;
